@@ -51,7 +51,7 @@
                         <tr>
                             <td class="px-2 py-1 align-middle">{{ forloop.counter }}</td>
                             <td class="px-2 py-1 align-middle text-center">
-                                {% if schedule.count_available %}
+                                {% if schedule.count_available is not None and schedule.count_available|float %}
                                 {{ schedule.count_available|floatformat:0|intcomma }}
                                 {% else %}
                                 0
