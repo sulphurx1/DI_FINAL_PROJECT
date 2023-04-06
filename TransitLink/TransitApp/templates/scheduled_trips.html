@@ -50,7 +50,13 @@
                         {% for schedule in schedules %}
                         <tr>
                             <td class="px-2 py-1 align-middle">{{ forloop.counter }}</td>
-                            <td class="px-2 py-1 align-middle text-center">{{ schedule.count_available|floatformat:0|intcomma }}</td>
+                            <td class="px-2 py-1 align-middle text-center">
+                                {% if schedule.count_available %}
+                                {{ schedule.count_available|floatformat:0|intcomma }}
+                                {% else %}
+                                0
+                                {% endif %}
+                            </td>
                             <td class="px-2 py-1 align-middle">
                                 <div class="lh-1">
                                     <div>{{ schedule.schedule|date:"Y-m-d h:i A" }}</div>
