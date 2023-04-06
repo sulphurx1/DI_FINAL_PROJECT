@@ -48,7 +48,9 @@ class Schedule(models.Model):
     
     def count_available(self):
         booked = Booking.objects.filter(schedule=self).aggregate(Sum('seats'))['seats__sum']
-        return self.bus.seats - booked
+        if booked:
+            return self.bus.seats - booked
+        return self.bus.seats
     
 class Booking(models.Model):
     code = models.CharField(max_length=100)
