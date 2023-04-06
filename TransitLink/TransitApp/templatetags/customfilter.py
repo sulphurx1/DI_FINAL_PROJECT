@@ -15,3 +15,11 @@ def encryptdata(value):
     fernet = Fernet(settings.ID_ENCRYPTION_KEY)
     value = fernet.encrpyt(str(value).encode())
     return value
+
+@register.filter
+def float(value):
+    try:
+        return float(value)
+    
+    except(ValueError, TypeError):
+        return 0.0
